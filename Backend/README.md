@@ -67,4 +67,64 @@ This endpoint is used to register a new user.
 
 This endpoint allows a new user to register by providing their first name, last name, email, and password. The password will be hashed before storing in the database. Upon successful registration, a JWT token is generated and returned along with the user details.
 
+# User Login Endpoint
+
+## POST /users/login
+
+This endpoint is used to log in an existing user.
+
+### Request
+
+- **URL:** `/users/login`
+- **Method:** `POST`
+- **Headers:** `Content-Type: application/json`
+- **Body:**
+  ```json
+  {
+    "email": "john.doe@example.com",
+    "password": "password123"
+  }
+  ```
+
+### Response
+
+- **Status Code:** `200 OK`
+  ```json
+  {
+    "token": "jwt_token_here",
+    "user": {
+      "_id": "user_id_here",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "john.doe@example.com",
+      "password": "hashed_password_here",
+      "socketId": null
+    }
+  }
+  ```
+
+- **Status Code:** `400 Bad Request`
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid Email",
+        "param": "email",
+        "location": "body"
+      },
+      {
+        "msg": "Password must be at least 6 characters long",
+        "param": "password",
+        "location": "body"
+      }
+    ]
+  }
+  ```
+
+### Description
+
+This endpoint allows an existing user to log in by providing their email and password. Upon successful login, a JWT token is generated and returned along with the user details.
+
 

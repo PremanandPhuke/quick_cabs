@@ -30,6 +30,7 @@ const userSchema= new mongoose.Schema({
     password: {
         type:String,
         required:true,
+        select : false,
     },
     socketId: {
         //this is used while we have to share our captain's location with user 

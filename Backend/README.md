@@ -127,4 +127,70 @@ This endpoint is used to log in an existing user.
 
 This endpoint allows an existing user to log in by providing their email and password. Upon successful login, a JWT token is generated and returned along with the user details.
 
+# User Profile Endpoint
+
+## GET /user/profile
+
+This endpoint is used to get the profile of the authenticated user.
+
+### Request
+
+- **URL:** `/user/profile`
+- **Method:** `GET`
+- **Headers:** `Authorization: Bearer <token>`
+
+### Response
+
+- **Status Code:** `200 OK`
+  ```json
+  {
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com"
+  }
+  ```
+
+- **Status Code:** `401 Unauthorized`
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+### Description
+
+This endpoint allows an authenticated user to get their profile details.
+
+# User Logout Endpoint
+
+## GET /user/logout
+
+This endpoint is used to log out the authenticated user and blacklist the token provided in cookie or headers.
+
+### Request
+
+- **URL:** `/user/logout`
+- **Method:** `GET`
+- **Headers:** `Authorization: Bearer <token>`
+
+### Response
+
+- **Status Code:** `200 OK`
+  ```json
+  {
+    "message": "Logged out successfully"
+  }
+  ```
+
+- **Status Code:** `401 Unauthorized`
+  ```json
+  {
+    "message": "Unauthorized"
+  }
+  ```
+
+### Description
+
+This endpoint allows an authenticated user to log out.
+
 

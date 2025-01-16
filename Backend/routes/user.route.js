@@ -2,7 +2,7 @@ const express= require('express');
 const router = express.Router();
 const {body}= require("express-validator");
 const userController= require('../controllers/user.controller');
-
+const authMiddleware= require('../middleware/auth.middleware');
 
 // here we are settiing up the route as well as validating the data which we gonna receive from user by adding constraints in the body
 router.post('/register',
@@ -22,5 +22,11 @@ router.post('/login', [
 ],
     userController.loginUser
 )
+
+// here we are creating a route for getting the user profile
+router.get('/profile', authMiddleware.authUser, userController.getUserProfile);
+
+// here we are creating a route for logout
+router.get('/logout', authMiddleware.authUser, userController.logoutUser);
 
 module.exports= router;

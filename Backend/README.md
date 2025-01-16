@@ -193,4 +193,76 @@ This endpoint is used to log out the authenticated user and blacklist the token 
 
 This endpoint allows an authenticated user to log out.
 
+# Captain Endpoints
+
+## Register Captain
+
+**Endpoint:** `/captains/register`
+
+**Method:** `POST`
+
+**Description:** Register a new captain.
+
+**Request Body:**
+```json
+{
+    "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+    },
+    "email": "string",
+    "password": "string",
+    "vehicle": {
+        "color": "string",
+        "plate": "string",
+        "capacity": "number",
+        "vehicleType": "string"
+    }
+}
+```
+
+**Response:**
+- **201 Created**
+    ```json
+    {
+        "token": "string",
+        "captain": {
+            "_id": "string",
+            "fullname": {
+                "firstname": "string",
+                "lastname": "string"
+            },
+            "email": "string",
+            "vehicle": {
+                "color": "string",
+                "plate": "string",
+                "capacity": "number",
+                "vehicleType": "string"
+            },
+            "status": "string"
+        }
+    }
+    ```
+- **400 Bad Request**
+    ```json
+    {
+        "errors": [
+            {
+                "msg": "string",
+                "param": "string",
+                "location": "string"
+            }
+        ]
+    }
+    ```
+
+**Validation Errors:**
+- `Invalid Email`
+- `First Name must be at least 3 characters long`
+- `Password must be at least 6 characters long`
+- `Color must be at least 3 characters long`
+- `Plate must be at least 3 characters long`
+- `Capacity must be at least 1`
+- `Invalid vehicle Type`
+
 

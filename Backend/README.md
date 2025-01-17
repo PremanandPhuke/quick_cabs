@@ -265,4 +265,125 @@ This endpoint allows an authenticated user to log out.
 - `Capacity must be at least 1`
 - `Invalid vehicle Type`
 
+## Login Captain
+
+**Endpoint:** `/captains/login`
+
+**Method:** `POST`
+
+**Description:** Login a captain.
+
+**Request Body:**
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+**Responses:**
+- **200 OK**
+  ```json
+  {
+    "token": "string",
+    "captain": {
+      "_id": "string",
+      "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+      },
+      "email": "string",
+      "vehicle": {
+        "color": "string",
+        "plate": "string",
+        "capacity": "number",
+        "vehicleType": "string"
+      },
+      "status": "string"
+    }
+  }
+  ```
+- **400 Bad Request**
+  ```json
+  {
+    "errors": [
+      {
+        "msg": "Invalid email or password format",
+        "param": "string",
+        "location": "string"
+      }
+    ]
+  }
+  ```
+- **401 Unauthorized**
+  ```json
+  {
+    "message": "Invalid email or password"
+  }
+  ```
+
+## Captain Profile
+
+**Endpoint:** `/captains/profile`
+
+**Method:** `GET`
+
+**Description:** Get the profile of the logged-in captain.
+
+**Headers:**
+- `Authorization`: Bearer token
+
+**Responses:**
+- **200 OK**
+  ```json
+  {
+    "captain": {
+      "_id": "string",
+      "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+      },
+      "email": "string",
+      "vehicle": {
+        "color": "string",
+        "plate": "string",
+        "capacity": "number",
+        "vehicleType": "string"
+      },
+      "status": "string"
+    }
+  }
+  ```
+- **401 Unauthorized**
+  ```json
+  {
+    "message": "Authentication required"
+  }
+  ```
+
+## Logout Captain
+
+**Endpoint:** `/captains/logout`
+
+**Method:** `GET`
+
+**Description:** Logout the captain.
+
+**Headers:**
+- `Authorization`: Bearer token
+
+**Responses:**
+- **200 OK**
+  ```json
+  {
+    "message": "Successfully logged out"
+  }
+  ```
+- **401 Unauthorized**
+  ```json
+  {
+    "message": "Authentication required"
+  }
+  ```
+
 

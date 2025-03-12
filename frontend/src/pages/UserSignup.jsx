@@ -109,30 +109,29 @@
 
 // export default UserSignup;
 
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UserSignup = () => {
   // State to manage form data
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    countryCode: '+1', // Default: United States
-    password: '',
+    fullName: "",
+    email: "",
+    phone: "",
+    countryCode: "+1", // Default: United States
+    password: "",
   });
 
   // List of country codes
   const countryCodes = [
-    { code: '+1', name: 'United States' },
-    { code: '+91', name: 'India' },
-    { code: '+44', name: 'United Kingdom' },
-    { code: '+61', name: 'Australia' },
-    { code: '+33', name: 'France' },
-    { code: '+49', name: 'Germany' },
-    { code: '+81', name: 'Japan' },
-    { code: '+86', name: 'China' },
+    { code: "+1", name: "United States" },
+    { code: "+91", name: "India" },
+    { code: "+44", name: "United Kingdom" },
+    { code: "+61", name: "Australia" },
+    { code: "+33", name: "France" },
+    { code: "+49", name: "Germany" },
+    { code: "+81", name: "Japan" },
+    { code: "+86", name: "China" },
     // Add more country codes as needed
   ];
 
@@ -145,22 +144,42 @@ const UserSignup = () => {
     });
   };
 
+  const resetForm = () => {
+    setFormData({
+      fullName: "",
+    email: "",
+    phone: "",
+    countryCode: "+1", // Default: United States
+    password: "",
+    });
+  };
+
   // Handle form submission
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log('Signup Form Data:', formData);
+    console.log("Signup Form Data:", formData);
+
+    resetForm();
     // Add your signup logic here (e.g., API call)
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')` }}>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')`,
+      }}
+    >
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-center">
           Sign Up for <span className="text-yellow-400">QuickCabs</span>
         </h2>
         <form onSubmit={onSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="fullName"
+            >
               Full Name
             </label>
             <input
@@ -174,7 +193,10 @@ const UserSignup = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -188,7 +210,10 @@ const UserSignup = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="phone"
+            >
               Phone Number
             </label>
             <div className="flex">
@@ -218,7 +243,10 @@ const UserSignup = () => {
             </div>
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -239,9 +267,17 @@ const UserSignup = () => {
           </button>
         </form>
         <p className="text-center mt-4">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="text-yellow-500 hover:underline">
             Login
+          </Link>
+        </p>
+        <p className="text-center mt-4">
+          <Link
+            to="/captain-login"
+            className="inline-block bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+          >
+            Sign Up as a Captain
           </Link>
         </p>
       </div>

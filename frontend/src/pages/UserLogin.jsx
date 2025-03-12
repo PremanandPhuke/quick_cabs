@@ -101,10 +101,19 @@ const UserLogin = () => {
     });
   };
 
+  
+  const resetForm = () => {
+    setFormData({
+      email: '',
+      password: '',
+    });
+  };
+
   // Handle form submission
   const onSubmit = (event) => {
     event.preventDefault();
     console.log('Login Form Data:', formData);
+    resetForm();
     // Add your login logic here (e.g., API call)
   };
 
